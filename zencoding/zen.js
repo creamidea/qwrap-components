@@ -50,14 +50,6 @@ function parseEl(matches, n){
 	}
 }
 
-function cloneNodes(els){
-	var ret = [];
-	for(var i = 0; i < els.length; i++){
-		ret.push(els[i].cloneNode(true));
-	}	
-	return ret;
-}
-
 function reduce(tokens, ops, match /*匹配括号*/){
 	while(ops.length){
 		var op = ops.shift();
