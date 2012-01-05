@@ -12,7 +12,6 @@
  */
 var trim = StringH.trim,
 	W = QW.NodeW,
-	g = QW.Dom.g,
 	isArray = ObjectH.isArray;
 
 function parseEl(matches, n){
