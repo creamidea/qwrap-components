@@ -33,6 +33,9 @@ function parseEl(matches, n){
 			
 			for(var i = 0; i < attrs.length; i++){
 				var attr = attrs[i].split('=');
+				if(attr[0] == "class"){
+					attr[0] = "className"; //解决早期版本的IE的兼容问题
+				}
 				elW.attr(attr[0], attr[1] || '');
 			}	
 		}
