@@ -66,9 +66,11 @@
 				mix(options, _options);
 				this.options = options;
 				this._initialize();
-				this.on('complete', function(){
-					this.signal();
-				});
+				if(QW.Async && a.sequence){
+					this.on('complete', function(){
+						this.signal();
+					});
+				}
 			}else{
 				_options = options;
 			}
@@ -178,7 +180,9 @@
 				},options,true));
 			}
 			if(QW.Async && a.sequence){	//如果支持异步序列，wait
-				a.wait(a.request);
+				a.wait(function(){
+					a.request();
+				});
 			}else{
 				a.request();
 			}

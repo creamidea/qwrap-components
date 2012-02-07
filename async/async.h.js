@@ -53,9 +53,7 @@ var AsyncH = {
 				handler = function(){};	//多unshift进一个空的function
 				seq.unshift(handler);
 			}
-			handler.call(owner, function(){
-				AsyncH.signal(owner);
-			});	//队列空，立即执行当前处理器
+			handler.call(owner);	//队列空，立即执行当前处理器
 		}
 	},
 	signal: function(owner, type){
@@ -64,9 +62,7 @@ var AsyncH = {
 		var fn = seq.shift();
 		if(seq[0]){		//如果队列顶部有新的，可以继续执行
 			(function(handler){
-				handler.call(owner, function(){
-					AsyncH.signal(owner);
-				});
+				handler.call(owner);
 			})(seq[0]);
 		}
 		return !!fn;
