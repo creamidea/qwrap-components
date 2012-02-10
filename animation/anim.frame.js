@@ -30,7 +30,7 @@ function getAnimationFrame(){
 			request :msRequestAnimationFrame,
 			cancel : msCancelRequestAnimationFrame
 		}
-	} else if(window.mozCancelRequestAnimationFrame && mozRequestAnimationFrame) {
+	} else if(window.mozCancelRequestAnimationFrame && window.mozRequestAnimationFrame) { //firefox11没有实现cancelRequestAnimationFrame
 		return {
 			request :mozRequestAnimationFrame,
 			cancel : mozCancelRequestAnimationFrame
@@ -55,7 +55,7 @@ function getAnimationFrame(){
 
 if(!(window.requestAnimationFrame || 
 	 window.webkitRequestAnimationFrame ||
-	 (window.mozCancelRequestAnimationFrame && mozRequestAnimationFrame) ||
+	 (window.mozCancelRequestAnimationFrame && window.mozRequestAnimationFrame) ||
 	 window.msRequestAnimationFrame))
 {
 	var AnimationTimingManager = (function(){
