@@ -30,7 +30,8 @@ function getAnimationFrame(){
 			request :msRequestAnimationFrame,
 			cancel : msCancelRequestAnimationFrame
 		}
-	} else if(window.mozCancelRequestAnimationFrame && window.mozRequestAnimationFrame) { //firefox11没有实现cancelRequestAnimationFrame
+	} else if(window.mozCancelRequestAnimationFrame && window.mozRequestAnimationFrame) { 
+		//firefox，11以下的版本没有实现cancelRequestAnimationFrame
 		return {
 			request :mozRequestAnimationFrame,
 			cancel : mozCancelRequestAnimationFrame
